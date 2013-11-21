@@ -61,7 +61,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     pkg_cmd << "echo \"127.0.0.1      internal_registry\" >> /etc/hosts; \n" 
     
     # Need a reboot to load the guest additions.
-    pkg_cmd << "shutdown -r +1; "
+    #pkg_cmd << "shutdown -r +1; "
+    pkg_cmd << "echo 'packer' | sudo -S shutdown -P now" 
     config.vm.provision :shell, :inline => pkg_cmd
   end
 end
